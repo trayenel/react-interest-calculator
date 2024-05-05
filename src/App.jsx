@@ -5,8 +5,7 @@ import InputGroupComponent from "./components/InputGroupComponent/Input-group-co
 import InputComponent from "./components/InputComponent/Input-component.jsx";
 import ActionComponent from "./components/ActionsComponent/action-component.jsx";
 import ButtonComponent from "./components/UIComponent/ButtonComponent/ButtonComponent.jsx";
-import TableContentsComponent from "./components/TableComponent/Table-contents-component.jsx";
-import TableHeadComponent from "./components/TableComponent/Table-head-component.jsx";
+import TableComponent from "./components/TableComponent/Table-component.jsx";
 
 function App() {
   const calculateHandler = (data) => {
@@ -36,21 +35,19 @@ function App() {
     return yearlyData;
   };
 
-  const [userInput, setUserInput] = useState({
-    "current-savings": 0,
-    "yearly-contribution": 0,
-    "expected-return": 0,
-    duration: 0,
-  });
+  const [userInput, setUserInput] = useState({});
 
   const [yearlyData, setYearlyData] = useState([]);
 
   const dataHandler = function (data, label) {
-    setUserInput((oldData) => ({ ...oldData, [label]: +data }));
+    setUserInput((oldData) => ({
+      ...oldData,
+      [label]: +data,
+    }));
   };
 
   const yearlyDataHandler = (data) => {
-    yearlyData.push(data);
+    setYearlyData(data);
   };
 
   const yearlyDataReset = () => {
@@ -107,9 +104,7 @@ function App() {
           ></ButtonComponent>
         </ActionComponent>
       </FormComponent>
-      <TableHeadComponent>
-        <TableContentsComponent data={yearlyData} />
-      </TableHeadComponent>
+      <TableComponent data={yearlyData}></TableComponent>
     </div>
   );
 }

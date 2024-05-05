@@ -9,7 +9,6 @@ const ButtonComponent = (props) => {
         onClick={(e) => {
           e.preventDefault();
           props.setYearlyState(props.dataHandler(props.userData));
-          console.log(props.yearly);
         }}
       >
         {props.type[0].toUpperCase() + props.type.slice(1)}
