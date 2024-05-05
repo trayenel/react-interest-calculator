@@ -1,7 +1,8 @@
 import styles from "./table-component.module.css";
 
 const TableComponent = (props) => {
-  if (props.data.length < 1) return;
+  if (props.data.length < 1)
+    return <p className={styles.info}>No investment calculated yet</p>;
   let totalSavings = 0;
   let totalContribution = 0;
   return (
